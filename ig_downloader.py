@@ -28,7 +28,8 @@ try:
         except:
             print('deu erro ou user desligou o loop')
         print('Loop concluido...')
-        time.sleep(5)
+        print('Aguardando 10min proximo loop')
+        time.sleep(600)
 
 except KeyboardInterrupt:
     pass

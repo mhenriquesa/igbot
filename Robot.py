@@ -1,6 +1,7 @@
 import re
 import time
 import random
+from db_main import Post
 from selenium import webdriver
 from getvarnpaste import getvarnpaste
 from selenium.webdriver.common.by import By
