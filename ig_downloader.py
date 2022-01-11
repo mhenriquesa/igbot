@@ -1,35 +1,27 @@
 import time
-from datetime import datetime
-from itertools import takewhile
-import instaloader
-
-L = instaloader.Instaloader(save_metadata=False)
-
-L.load_session_from_file(
-    'segredosdaslojas', 'D:\Programming\Projetos\instagramBotComments\session-segredosdaslojas')
-
-targets = ["sairet_confeccoes", 'pamelita_modas_oficial', 'lekadrye', 'bacarinismodas', 'luepeixoto_fashion',
-           'delroatacado', 'popmodaslegg', 'fabismarmodas', 'modas_yurian', 'pop.modasjeans', 'modas_lindo']
+from instaloader_downloads import downloader
+from ig_organizer import organizer
 
 try:
     while True:
         try:
-            for target in targets:
-                print('Olhando: ' + target)
-                profile = instaloader.Profile.from_username(L.context, target)
-                posts = instaloader.Profile.get_posts(profile)
-
-                for post in takewhile(lambda p: p.date_local > datetime(2022, 1, 5), posts):
-                    r = L.download_post(post, target)
-                    if r == False:
-                        break
-                print('Time entre fornecedores.... 6min ')
-                time.sleep(360)
+            downloader()
         except:
             print('deu erro ou user desligou o loop')
-        print('Loop concluido...')
+
+        print('Loop concluido...ou user cancelou o Loop')
         print('Aguardando 10min proximo loop')
         time.sleep(600)
 
+
 except KeyboardInterrupt:
     pass
+
+try:
+    print('Organizando midias... Separando por posts...')
+    organizer()
+
+except:
+    print(' Erro ao organizar midias')
+
+print('Done')

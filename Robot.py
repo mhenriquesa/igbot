@@ -1,16 +1,19 @@
 import re
 import time
 import random
-from db_main import Post
 from selenium import webdriver
-from getvarnpaste import getvarnpaste
-from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # driver = webdriver.Firefox(executable_path='D:\Programas\geckodriver.exe')
-driver = webdriver.Chrome(executable_path='D:\Programas\chromedriver.exe')
+options = webdriver.ChromeOptions()
+options.add_argument(
+    r'user-data-dir=C:/Users/oisés Henrique/AppData/Local/Google/Chrome/User Data')
+
+options.add_argument('--profile-directory=Profile 2')
+
+driver = webdriver.Chrome(
+    executable_path='D:\Programas\chromedriver.exe', chrome_options=options)
 
 
 def _type_like_a_person(sentence, single_input_field):
@@ -18,11 +21,6 @@ def _type_like_a_person(sentence, single_input_field):
     for letter in sentence:
         single_input_field.send_keys(letter)
         time.sleep(random.randint(1, 6) / 30)
-
-
-def _waiting(xpath):
-    return WebDriverWait(driver, 5).until(EC.visibility_of_element_located(
-        (By.XPATH, xpath)))
 
 
 def _scroll_page():
@@ -93,36 +91,10 @@ def login(username, password):
     pass_field.send_keys(Keys.RETURN)
 
 
-def trypost():
-    # find plus sign
-    plussign = _waiting("//*[@aria-label='New Post']")
-    plussign.click()
-    time.sleep(3)
-
-    addbtn = _waiting(r"//*/button[text()='Select from computer']")
-    addbtn.click()
-    time.sleep(5)
-
-    getvarnpaste(r"D:\images\02_54542_fewfew.jpg")
-    time.sleep(2)
-
-    nextbtn = _waiting("//button[text()='Next']")
-    nextbtn.click()
-
-    nextbtn = _waiting("//button[text()='Next']")
-    nextbtn.click()
-
-    textarea = _waiting("//*/textarea[@aria-label='Write a caption...']")
-
-    _type_like_a_person("teste 123", textarea)
-
-    time.sleep(60)
+# login("segredosdaslojas", "Mh3226572")
 
 
-login("segredosdaslojas", "Mh3226572")
-trypost()
-
-input("Click")
+# input("Click")
 
 # ---------------------------------------
 # t_end = time.time() + 60 * 4

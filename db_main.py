@@ -9,7 +9,7 @@ from sqlalchemy import create_engine  # Todas as operacoes nas tables
 BASE = declarative_base()
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 CONNECTION_STRING = 'sqlite:///' + os.path.join(BASE_DIR, 'poster.db')
-ENGINE = create_engine(CONNECTION_STRING, echo=True)
+ENGINE = create_engine(CONNECTION_STRING, echo=False)
 
 newsession = sessionmaker()
 local_session = newsession(bind=ENGINE)
