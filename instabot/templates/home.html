@@ -1,0 +1,16 @@
+{% extends 'layout.html'%}
+{% block content%}
+
+    {% for post in posts: %}
+        <h1>{{post.fornecedor}}</h1>
+        <h2>{{post.video}}</h2>
+    {% endfor %}
+    <form action="/download_stories" method="post">
+        <input type="submit" name="download_stories" value="Baixar Stories" />
+    </form>
+
+    <form action="/download_posts" method="post">
+        <input type="submit" name="download_posts" value="Baixar Posts" />
+    </form>
+
+{% endblock content%}

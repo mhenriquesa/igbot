@@ -1,20 +1,20 @@
 import time
-from getvarnpaste import getvarnpaste
-from ig_post_manager import next_post_files
+from instabot.Config import FBBUSINESS
+from commenter import driver, _go_to
+from instabot.util.getvarnpaste import getvarnpaste
+from instabot.util.get_next_post import next_post_files
 from selenium.webdriver.common.by import By
-from Robot import driver, _type_like_a_person, _go_to
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
 def _waiting(xpath):
-    return WebDriverWait(driver, 5).until(EC.visibility_of_element_located(
-        (By.XPATH, xpath)))
+    return WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, xpath)))  # nopep8
 
 
 def trypost():
 
-    _go_to("https://business.facebook.com/latest/posts/published_posts?asset_id=105349341511172&business_id=502990630698560&nav_ref=bm_home_redirect")
+    _go_to(FBBUSINESS)
     time.sleep(10)
 
     create_story_button = _waiting("//div[text()='Criar story']")
@@ -30,7 +30,4 @@ def trypost():
 
     share_button = _waiting("//div[text()='Compartilhar story']")
     share_button.click()
-    time.sleep(20)
-
-
-trypost()
+    time.sleep(10)

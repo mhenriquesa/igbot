@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 # driver = webdriver.Firefox(executable_path='D:\Programas\geckodriver.exe')
 options = webdriver.ChromeOptions()
 options.add_argument(
-    r'user-data-dir=C:/Users/oisés Henrique/AppData/Local/Google/Chrome/User Data')
+    r'user-data-dir=C:/Users/Moisés Henrique/AppData/Local/Google/Chrome/User Data')
 
 options.add_argument('--profile-directory=Profile 2')
 
@@ -60,7 +60,7 @@ def comment_on_hashtags():
     _scroll_page()
     hashtag_post_links = _get_posts_links()
     visited_links = []
-    # comments_options = ['Lindo! amei!', 'Adorei', 'Merece um like !']
+    comments_options = ['Lindo! amei!', 'Adorei', 'Merece um like !']
     comments_options = ["😁", "👏👏👏", "❣️❣️", "👏",
                         "❣️❣️❣️", "gostei! 😁", "ganhou meu like!👏"]
 
@@ -90,13 +90,6 @@ def login(username, password):
     time.sleep(1)
     pass_field.send_keys(Keys.RETURN)
 
-
-# login("segredosdaslojas", "Mh3226572")
-
-
-# input("Click")
-
-# ---------------------------------------
 # t_end = time.time() + 60 * 4
 
 # while time.time() < t_end:
